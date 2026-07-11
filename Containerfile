@@ -3,9 +3,9 @@ FROM scratch AS ctx
 COPY build_files /
 COPY system_files /system_files
 
-# Bazzite's GNOME NVIDIA image retains a GNOME fallback session while adding
-# Hyprland as the primary Wayland compositor.
-FROM ghcr.io/ublue-os/bazzite-gnome-nvidia:stable
+# Bazzite's NVIDIA KDE Plasma image retains Plasma as a fallback session while
+# adding Hyprland as the primary Wayland compositor.
+FROM ghcr.io/ublue-os/bazzite-nvidia:stable
 
 ### [IM]MUTABLE /opt
 ## Some bootable images, like Fedora, have /opt symlinked to /var/opt, in order to

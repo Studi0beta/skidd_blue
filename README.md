@@ -1,11 +1,11 @@
 # skidd_blue
 
-`skidd_blue` is a public Universal Blue image for NVIDIA desktop and laptop gaming systems. It derives from Bazzite's GNOME NVIDIA image, with Hyprland as an additional desktop session and GNOME retained as a fallback.
+`skidd_blue` is a public Universal Blue image for NVIDIA desktop and laptop gaming systems. It derives from Bazzite's NVIDIA KDE Plasma image, with Hyprland as an additional desktop session and Plasma retained as a fallback.
 
 ## Included
 
 - Bazzite's proprietary NVIDIA driver, Steam, gaming tools, Bluetooth stack, and controller support
-- GNOME as a fallback session in GDM
+- KDE Plasma as a fallback session in SDDM
 - Current Hyprland packages from the LionHeartP COPR, installed at image build time
 - Noctalia v5, Helix, Ghostty, Fish, eza, Zoxide, Hyprlock, Hypridle, Hyprpaper, and Hyprland's portal
 - A starter Hyprland configuration for new user accounts that starts Noctalia and configures common keybindings
@@ -55,7 +55,7 @@ sudo bootc switch ghcr.io/studi0beta/skidd_blue:latest
 systemctl reboot
 ```
 
-No registry credentials are required. At GDM, select **Hyprland** for the custom session or **GNOME** for the fallback session.
+No registry credentials are required. At SDDM, select **Hyprland** for the custom session or **Plasma** for the fallback session.
 
 To use the starter configuration with an account that already exists, copy it once before logging into Hyprland:
 

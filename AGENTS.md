@@ -4,7 +4,7 @@
 
 `skidd_blue` is a public Universal Blue bootc image for NVIDIA desktops and laptops. It is published as `ghcr.io/studi0beta/skidd_blue:latest`.
 
-The image derives from `ghcr.io/ublue-os/bazzite-gnome-nvidia:stable`. GNOME must remain available as the GDM fallback session; Hyprland is the primary custom session.
+The image derives from `ghcr.io/ublue-os/bazzite-nvidia:stable`. KDE Plasma must remain available as the SDDM fallback session; Hyprland is the primary custom session.
 
 ## Image Contents
 
@@ -53,11 +53,11 @@ The local development machine may not have `just`, `podman`, or `shellcheck`; Gi
 
 ## Current State
 
-The image recipe has been committed through `74f471c` (`Fix pinned Fisher plugin sources`). That commit corrects an earlier build failure caused by using annotated Git tag objects instead of their peeled source commits for Fisher and Tide. Confirm the GitHub Actions build for the current `main` commit passes before rebasing any machine.
+`74f471c` (`Fix pinned Fisher plugin sources`) corrected an earlier build failure caused by using annotated Git tag objects instead of their peeled source commits for Fisher and Tide. Confirm the GitHub Actions build for the current `main` commit passes before rebasing any machine.
 
 ## Rebase Target
 
-Install Bazzite GNOME NVIDIA on a new NVIDIA machine, then, after a successful custom-image build:
+Install Bazzite NVIDIA KDE Plasma on a new NVIDIA machine, then, after a successful custom-image build:
 
 ```bash
 sudo bootc switch ghcr.io/studi0beta/skidd_blue:latest
