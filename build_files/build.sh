@@ -5,26 +5,27 @@ set -ouex pipefail
 # Copy the contents of system_files/ of the git repo to /
 cp -avf "/ctx/system_files"/. /
 
-# The COPR supplies a newer Hyprland than Fedora stable. Disable it after the
-# transaction so installed systems do not use it for future package layering.
+# These COPRs supply Hyprland and Ghostty. Disable them after installation so
+# installed systems do not use third-party repositories for package layering.
 dnf5 -y copr enable lionheartp/Hyprland
-dnf5 install -y \
-    hypridle \
-    hyprland \
-    hyprlock \
-    hyprpaper \
-    hyprpolkitagent \
-    xdg-desktop-portal-hyprland
-dnf5 -y copr disable lionheartp/Hyprland
+dnf5 -y copr enable scottames/ghostty
 
 dnf5 install -y \
     brightnessctl \
     fish \
     ghostty \
     helix \
+    hypridle \
+    hyprland \
+    hyprlock \
+    hyprpaper \
+    hyprpolkitagent \
     noctalia \
     playerctl \
-    wl-clipboard
+    wl-clipboard \
+    xdg-desktop-portal-hyprland
+dnf5 -y copr disable lionheartp/Hyprland
+dnf5 -y copr disable scottames/ghostty
 
 # Noctalia v5 is required for the supplied configuration. Do not silently
 # produce an image with the older Quickshell-based v4 package.
