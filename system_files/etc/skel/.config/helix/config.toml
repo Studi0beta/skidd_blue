@@ -1,0 +1,20 @@
+# Helix Config
+
+theme = "base16_transparent"
+
+[editor]
+line-number = "relative"
+scroll-lines = 1
+mouse = true
+auto-format = true
+
+[editor.cursor-shape]
+insert = "underline"
+normal = "block"
+select = "block"
+
+[editor.lsp]
+display-messages = true
+
+[keys.normal]
+C-A-r = ":reload-all"

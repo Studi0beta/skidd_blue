@@ -1,0 +1,21 @@
+# Ghostty Config
+shell-integration-features = ssh-terminfo,ssh-env
+theme = Gruvbox Material Dark
+macos-titlebar-style = tabs
+background-opacity = 0.9
+background-blur = 15
+
+font-family = JetBrainsMono Nerd Font
+font-size = 14
+font-style = Regular
+font-style-bold = Bold
+font-style-italic = Italic
+font-style-bold-italic = Bold Italic
+
+font-thicken = true
+font-thicken-strength = 100
+font-feature = +liga
+adjust-cell-height = 3
+
+window-padding-x = 10
+window-padding-y = 10

@@ -7,8 +7,9 @@
 - Bazzite's proprietary NVIDIA driver, Steam, gaming tools, Bluetooth stack, and controller support
 - GNOME as a fallback session in GDM
 - Current Hyprland packages from the LionHeartP COPR, installed at image build time
-- Noctalia v5, Helix, Ghostty, Fish, Hyprlock, Hypridle, Hyprpaper, and Hyprland's portal
+- Noctalia v5, Helix, Ghostty, Fish, eza, Zoxide, Hyprlock, Hypridle, Hyprpaper, and Hyprland's portal
 - A starter Hyprland configuration for new user accounts that starts Noctalia and configures common keybindings
+- Ghostty, Helix, and Fish defaults, including bundled Tide, fzf.fish, and plugin-git Fish plugins
 
 The image is published to `ghcr.io/studi0beta/skidd_blue:latest`.
 
