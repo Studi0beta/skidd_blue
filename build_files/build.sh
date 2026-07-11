@@ -34,12 +34,12 @@ dnf5 -y copr disable scottames/ghostty
 # pinned so scheduled builds do not unexpectedly change the shell experience.
 mkdir -p /etc/skel/.config/fish/functions
 curl -fsSL \
-    https://raw.githubusercontent.com/jorgebucaran/fisher/2bcba37a421c3f208bb7cc6cf3e745ec3cfe7144/functions/fisher.fish \
+    https://raw.githubusercontent.com/jorgebucaran/fisher/a6bf0e5b9e356d57d666bc6def114f16f1e5e209/functions/fisher.fish \
     -o /etc/skel/.config/fish/functions/fisher.fish
 HOME=/etc/skel XDG_CONFIG_HOME=/etc/skel/.config fish -c '
     source /etc/skel/.config/fish/functions/fisher.fish
     fisher install \
-        IlanCosman/tide@7aa287dbbcaee5679d1bc672e5a8f6e0d78cd23e \
+        IlanCosman/tide@c4e3831dc4392979478d3d7b66a68f0274996c85 \
         PatrickF1/fzf.fish@6a6136998879dcc1f29a405dfdd6b92c5f229c39 \
         jhillyerd/plugin-git@dd1f559c01cde4cf0d16581b60e20d29f33c0665
 '
