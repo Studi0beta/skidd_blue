@@ -1,14 +1,14 @@
 # skidd_blue
 
-`skidd_blue` is a public Universal Blue image for NVIDIA desktop and laptop gaming systems. It derives from Bazzite's NVIDIA KDE Plasma image, with Hyprland as an additional desktop session and Plasma retained as a fallback.
+`skidd_blue` is a public Universal Blue image for NVIDIA desktop and laptop gaming systems. It derives from Bazzite's NVIDIA KDE Plasma image, with Niri as an additional desktop session and Plasma retained as a fallback.
 
 ## Included
 
 - Bazzite's proprietary NVIDIA driver, Steam, gaming tools, Bluetooth stack, and controller support
 - KDE Plasma as a fallback session in SDDM
-- Current Hyprland packages from the LionHeartP COPR, installed at image build time
-- Noctalia v5, Helix, Ghostty, Fish, eza, Zoxide, Hyprlock, Hypridle, Hyprpaper, and Hyprland's portal
-- A starter Hyprland configuration for new user accounts that starts Noctalia and configures common keybindings
+- Niri, Xwayland Satellite, and the GNOME desktop portal from Fedora
+- Noctalia v5, Helix, Ghostty, Fish, eza, and Zoxide
+- A starter Niri configuration for new user accounts that starts Noctalia and configures common keybindings
 - Ghostty, Helix, and Fish defaults, including bundled Tide, fzf.fish, and plugin-git Fish plugins
 
 The image is published to `ghcr.io/studi0beta/skidd_blue:latest`.
@@ -23,10 +23,11 @@ Generate a signing key once:
 COSIGN_PASSWORD="" cosign generate-key-pair
 ```
 
-Commit `cosign.pub`, but never commit `cosign.key`. Add the contents of `cosign.key` as the `SIGNING_SECRET` repository Actions secret:
+Commit `cosign.pub`, but never commit `cosign.key`. Add the contents of `cosign.key` as the `SIGNING_SECRET` repository Actions secret, and its generation password as `COSIGN_PASSWORD`:
 
 ```bash
 gh secret set SIGNING_SECRET < cosign.key
+gh secret set COSIGN_PASSWORD
 ```
 
 Build locally:
@@ -55,18 +56,18 @@ sudo bootc switch ghcr.io/studi0beta/skidd_blue:latest
 systemctl reboot
 ```
 
-No registry credentials are required. At SDDM, select **Hyprland** for the custom session or **Plasma** for the fallback session.
+No registry credentials are required. At SDDM, select **Niri** for the custom session or **Plasma** for the fallback session.
 
-To use the starter configuration with an account that already exists, copy it once before logging into Hyprland:
+To use the starter configuration with an account that already exists, copy it once before logging into Niri:
 
 ```bash
-mkdir -p ~/.config/hypr
-cp /etc/skel/.config/hypr/hyprland.conf ~/.config/hypr/hyprland.conf
+mkdir -p ~/.config/niri
+cp /etc/skel/.config/niri/config.kdl ~/.config/niri/config.kdl
 ```
 
 New accounts receive the configuration automatically. Fish is the default shell for accounts created after this image is installed; rebasing does not alter existing users' shells.
 
-## Hyprland Keys
+## Niri Keys
 
 - `Super` + `Return`: Ghostty
 - `Super` + `Space`: Noctalia launcher

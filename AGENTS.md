@@ -4,22 +4,23 @@
 
 `skidd_blue` is a public Universal Blue bootc image for NVIDIA desktops and laptops. It is published as `ghcr.io/studi0beta/skidd_blue:latest`.
 
-The image derives from `ghcr.io/ublue-os/bazzite-nvidia:stable`. KDE Plasma must remain available as the SDDM fallback session; Hyprland is the primary custom session.
+The image derives from `ghcr.io/ublue-os/bazzite-nvidia:stable`. KDE Plasma must remain available as the SDDM fallback session; Niri is the primary custom session.
 
 ## Image Contents
 
 - Bazzite NVIDIA gaming stack, Bluetooth, and controller support come from the base image.
-- Hyprland and companion packages come from `lionheartp/Hyprland` COPR during image build only.
+- Niri and its portal come from Fedora repositories.
+- Noctalia comes from `lionheartp/Hyprland` COPR during image build only.
 - Ghostty comes from `scottames/ghostty` COPR during image build only.
 - Both COPRs must be disabled after package installation.
 - Noctalia must be v5. The build deliberately fails if `noctalia` is not a v5 release.
-- The image includes Helix, Fish, eza, fzf, Zoxide, Ghostty, and Hyprland utilities.
+- The image includes Helix, Fish, eza, fzf, Zoxide, Ghostty, Niri, Xwayland Satellite, and its desktop portal.
 
 ## User Defaults
 
 Files in `system_files/etc/skel/.config/` are copied only to new accounts:
 
-- `hypr/hyprland.conf` starts Noctalia and defines starter keybindings.
+- `niri/config.kdl` starts Noctalia and defines starter keybindings.
 - `ghostty/config` and `helix/config.toml` mirror the desired terminal and editor defaults.
 - `fish/` configures `EDITOR=hx`, Zoxide, eza-backed `ls` and `ll`, and the Fisher plugin manifest.
 - `build_files/build.sh` installs Fisher, Tide v6, fzf.fish, and plugin-git into `/etc/skel` using pinned upstream commits.
@@ -30,7 +31,7 @@ Do not alter existing users' shells or configuration during a rebase. Existing u
 
 - GitHub Actions builds on pushes to `main` and publishes to GHCR.
 - `cosign.pub` is committed. `cosign.key` is ignored and must never be committed or displayed.
-- The repository Actions secret `SIGNING_SECRET` contains the private signing key.
+- The repository Actions secrets `SIGNING_SECRET` and `COSIGN_PASSWORD` contain the private signing key and its password.
 - Use the existing GitHub Actions workflow; do not replace its rechunking or signing steps without a reason.
 - The local Git identity is not configured globally. For repository commits use:
 

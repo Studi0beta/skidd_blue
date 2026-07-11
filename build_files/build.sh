@@ -5,7 +5,7 @@ set -ouex pipefail
 # Copy the contents of system_files/ of the git repo to /
 cp -avf "/ctx/system_files"/. /
 
-# These COPRs supply Hyprland and Ghostty. Disable them after installation so
+# These COPRs supply Noctalia and Ghostty. Disable them after installation so
 # installed systems do not use third-party repositories for package layering.
 dnf5 -y copr enable lionheartp/Hyprland
 dnf5 -y copr enable scottames/ghostty
@@ -17,16 +17,13 @@ dnf5 install -y \
     fzf \
     ghostty \
     helix \
-    hypridle \
-    hyprland \
-    hyprlock \
-    hyprpaper \
-    hyprpolkitagent \
+    niri \
     noctalia \
     playerctl \
     wl-clipboard \
+    xdg-desktop-portal-gnome \
     zoxide \
-    xdg-desktop-portal-hyprland
+    xwayland-satellite
 dnf5 -y copr disable lionheartp/Hyprland
 dnf5 -y copr disable scottames/ghostty
 
