@@ -12,6 +12,7 @@ dnf5 -y copr enable scottames/ghostty
 
 dnf5 install -y \
     brightnessctl \
+    cava \
     eza \
     fish \
     fzf \
@@ -20,7 +21,9 @@ dnf5 install -y \
     niri \
     noctalia \
     playerctl \
+    qt6ct \
     wl-clipboard \
+    wlsunset \
     xdg-desktop-portal-gnome \
     zoxide \
     xwayland-satellite
