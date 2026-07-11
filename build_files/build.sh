@@ -5,23 +5,44 @@ set -ouex pipefail
 # Copy the contents of system_files/ of the git repo to /
 cp -avf "/ctx/system_files"/. /
 
-### Install packages
+# The COPR supplies a newer Hyprland than Fedora stable. Disable it after the
+# transaction so installed systems do not use it for future package layering.
+dnf5 -y copr enable lionheartp/Hyprland
+dnf5 install -y \
+    hypridle \
+    hyprland \
+    hyprlock \
+    hyprpaper \
+    hyprpolkitagent \
+    xdg-desktop-portal-hyprland
+dnf5 -y copr disable lionheartp/Hyprland
 
-# Packages can be installed from any enabled yum repo on the image.
-# RPMfusion repos are available by default in ublue main images
-# List of rpmfusion packages can be found here:
-# https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/43/x86_64/repoview/index.html&protocol=https&redirect=1
+dnf5 install -y \
+    brightnessctl \
+    fish \
+    ghostty \
+    helix \
+    noctalia \
+    playerctl \
+    wl-clipboard
 
-# this installs a package from fedora repos
-dnf5 install -y tmux
+# Noctalia v5 is required for the supplied configuration. Do not silently
+# produce an image with the older Quickshell-based v4 package.
+noctalia_version=$(rpm -q --qf '%{VERSION}' noctalia)
+if [[ ! ${noctalia_version} =~ ^5\. ]]; then
+    echo "Noctalia v5 is required, but installed version is ${noctalia_version}." >&2
+    exit 1
+fi
 
-# Use a COPR Example:
-#
-# dnf5 -y copr enable ublue-os/staging
-# dnf5 -y install package
-# Disable COPRs so they don't end up enabled on the final image:
-# dnf5 -y copr disable ublue-os/staging
+# Apply Fish to accounts created after the image is installed. Existing users
+# retain their selected shell when rebasing.
+if grep -q '^SHELL=' /etc/default/useradd; then
+    sed -i 's|^SHELL=.*|SHELL=/usr/bin/fish|' /etc/default/useradd
+else
+    printf '%s\n' 'SHELL=/usr/bin/fish' >> /etc/default/useradd
+fi
 
-#### Example for enabling a System Unit File
-
-systemctl enable podman.socket
+# Bazzite carries the Bluetooth stack and controller drivers. Enable the
+# service so adapter discovery is available immediately after installation.
+systemctl enable bluetooth.service
+dnf5 clean all
