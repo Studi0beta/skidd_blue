@@ -6,8 +6,8 @@
 
 - Bazzite's proprietary NVIDIA driver, Steam, gaming tools, Bluetooth stack, and controller support
 - KDE Plasma as a fallback session in SDDM
-- Niri, Xwayland Satellite, and the GNOME desktop portal from Fedora
-- Noctalia v5, Helix, Ghostty, Fish, eza, and Zoxide
+- Niri, Xwayland Satellite, and the GNOME and GTK desktop portals from Fedora
+- Noctalia v5, Helix, Ghostty, Fish, eza, Zoxide, Nautilus, and nwg-look
 - A starter Niri configuration for new user accounts that starts Noctalia and configures common keybindings
 - Ghostty, Helix, and Fish defaults, including bundled Tide, fzf.fish, and plugin-git Fish plugins
 

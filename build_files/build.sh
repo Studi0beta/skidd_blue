@@ -18,13 +18,16 @@ dnf5 install -y \
     fzf \
     ghostty \
     helix \
+    nautilus \
     niri \
     noctalia \
+    nwg-look \
     playerctl \
     qt6ct \
     wl-clipboard \
     wlsunset \
     xdg-desktop-portal-gnome \
+    xdg-desktop-portal-gtk \
     zoxide \
     xwayland-satellite
 dnf5 -y copr disable lionheartp/Hyprland
